@@ -6,6 +6,9 @@ cd RSAM
 pip install -r requirements.txt
 ```
 
+### Preparing the Datasets
+The CIFAR10 and CIFAR100 datasets will be auto downloaded when running the code. The TinyImageNet dataset can be prepared with `bash load_tiny_imagenet.sh`
+
 ## Rényi Sharpness Computation
 Firstly run standard SGD or Adam:
 ```
