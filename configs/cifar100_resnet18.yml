@@ -1,0 +1,29 @@
+data: data/datasets
+use_full_data: False
+dataset: CIFAR100
+
+arch: resnet18
+init: kaiming
+
+optimizer: sgd
+lr: 0.1
+wd: 0.
+momentum: 0.9
+nesterov: False
+criterion: cross_entropy
+
+lr_policy: cosine_lr #constant_lr # multistep_lr #cosine_lr
+lr_gamma: 0.1
+
+regularization: L1
+lmbda: 0.000055
+
+batch_size: 128
+epochs: 200
+
+gpu: 2
+workers: 4
+
+sparse_epochs: 100
+
+sample_size: 0

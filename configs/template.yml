@@ -1,0 +1,31 @@
+data: data/datasets
+use_full_data: True
+dataset: CIFAR10
+
+arch: VGG16
+init: kaiming
+
+optimizer: sgd
+lr: 0.01
+wd: 0.
+momentum: 0.9
+nesterov: False
+criterion: cross_entropy
+
+lr_policy: constant_lr # multistep_lr cosine_lr
+lr_gamma: 0.1
+
+regularization: L1
+lmbda: 0.0
+
+batch_size: 128
+epochs: 200
+
+gpu: 1
+workers: 4
+
+sparse_epochs: 100
+
+sample_size: 0
+
+bias: True

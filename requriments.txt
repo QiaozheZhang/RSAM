@@ -1,0 +1,4 @@
+vit_pytorch==0.40.2
+torchattacks==3.5.1
+homura_core==2021.12.1
+nvitop
