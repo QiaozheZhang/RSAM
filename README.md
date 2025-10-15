@@ -26,3 +26,4 @@ python3 compute_renyi.py --aug False --dataset CIFAR10 --arch resnet18 --gpu 0  
 python3 train_sam.py --arch resnet20 --init none --dataset CIFAR10 --optimizer sgd --aug True --use_fix False --gpu 0 --epochs 200 --batch_size 128 --lr 0.1 --wd 0.0005 --lmbda 0 --renyi false --lr_policy cosine_lr --sam_mode NEWRSAM --renyi_s 0.65 --alpha 1.2 --plain_epoch 5
 ```
 
+We’re currently simplifying the codebase and making updates. Thanks for your patience. If you need the original runnable code urgently, please email me at qiaozhezhang1@gmail.com
