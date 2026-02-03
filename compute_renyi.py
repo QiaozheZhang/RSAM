@@ -103,28 +103,10 @@ for param_names in param_names_list:
     Tr = np.mean(scalar_estimate_list)
     print(Tr)
 
-    T_a_list = []
-    for T in T_list:
-        eigvals, eigvecs = torch.linalg.eigh(T)  # T is real symmetric
-        # T_a = eigvecs @ torch.diag(eigvals**alpha) @ eigvecs.T  # f(T) = T^a
-        T_a = eigvecs @ torch.diag(torch.abs(eigvals)**alpha) @ eigvecs.T  # f(T) = T^a
-        T_a_list.append(T_a)
-
-    scalar_estimate_list = [v_norm**2 * torch.dot(e1, T_a @ e1) for v_norm,T_a in zip(v_norm_list,T_a_list)]
-    scalar_estimate_list = [i.item() for i in scalar_estimate_list]
-
-    Tr_abs = np.mean(scalar_estimate_list)
-    print(Tr_abs)
-
     list1 = [1.001, 1.01, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3]
     list2 = [0.999, 0.99, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.06, 0.03, 0.01, 0.0001]
     all_list = list1 + list2 #[3, 2.5, 2.1, 1.9, 1.5, 1.1, 1.01, 1.001, 0.999, 0.99, 0.9, 0.6, 0.5, 0.3, 0.1, 0.06, 0.03, 0.01, 0.0001] #list1 + list2
     for alpha in all_list:
-        # if alpha < 1.1 and alpha > 0.9:
-        #     Tr = Tr_abs
-        # else:
-        #     Tr = Tr
-        # alpha = 3
         T_a_list = []
         for T in T_list:
             eigvals, eigvecs = torch.linalg.eigh(T)  # T is real symmetric
