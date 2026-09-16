@@ -8,7 +8,7 @@ from utils.eval_utils import accuracy
 from utils.utils import get_regularization_loss
 from utils.logging import AverageMeter
 from utils.sharpness import get_params_grad
-from regularizer.renyi_reg import renyi_reg, renyi_loss, fisher_approximation
+# from regularizer.renyi_reg import renyi_reg, renyi_loss, fisher_approximation
 
 from torch import optim
 import torch.nn.functional as F
@@ -90,12 +90,12 @@ def train_with_renyi(train_loader, model, criterion, optimizer, args):
         #     get_regularization_loss(args, model, regularizer=args.regularization,
         #                                 lmbda=args.lmbda)
         
-        if args.renyi:
-            # layer_name_list = ["conv5_x.0.residual_function.0.weight", "conv5_x.0.residual_function.3.weight", "conv5_x.0.shortcut.0.weight", "conv5_x.1.residual_function.0.weight", "conv5_x.1.residual_function.3.weight", "fc.weight"]
-            layer_name_list = [None]
-            # renyi = renyi_loss(images, target, model, criterion, layer_name_list, n_iters=5, alpha=2)
-            renyi = fisher_approximation(loss, model, layer_name_list, alpha=2)
-            loss += args.renyi_s*renyi
+        # if args.renyi:
+        #     # layer_name_list = ["conv5_x.0.residual_function.0.weight", "conv5_x.0.residual_function.3.weight", "conv5_x.0.shortcut.0.weight", "conv5_x.1.residual_function.0.weight", "conv5_x.1.residual_function.3.weight", "fc.weight"]
+        #     layer_name_list = [None]
+        #     # renyi = renyi_loss(images, target, model, criterion, layer_name_list, n_iters=5, alpha=2)
+        #     renyi = fisher_approximation(loss, model, layer_name_list, alpha=2)
+        #     loss += args.renyi_s*renyi
             # print(renyi)
             # regularization_loss += 0.1*renyi
             # # check gradient
